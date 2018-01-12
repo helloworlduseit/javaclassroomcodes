@@ -1,0 +1,95 @@
+import java.util.Scanner;;
+public class TestEmpAggregationDemo {
+
+	public static void main(String[] args) {
+		Scanner sc	=	new Scanner(System.in);
+		System.out.println("Enter Number of Employees:");
+		int count=sc.nextInt();
+		Employee empDetail[]= new Employee[count];
+		
+		int empid=0;
+		String name="null";
+		float sal=0;
+		Date dates;
+		int dd,mm,year;
+		
+		for(int i=0;i<empDetail.length;i++)
+		{
+			System.out.println("Enter Employee "+(i+1)+" ID: ");
+			empid	=	sc.nextInt();
+			System.out.println("Enter Employee "+(i+1)+" Name: ");
+			name	=	sc.next();
+			System.out.println("Enter Employee "+(i+1)+" Salary: ");
+			sal	=	sc.nextFloat();
+			System.out.println("Enter Employee "+(i+1)+" HireDate: ");
+			dd	=	sc.nextInt();
+			mm	=	sc.nextInt();
+			year	=	sc.nextInt();
+			dates=	new Date(dd,mm,year);
+			
+			empDetail[i]=new Employee(empid,name,sal,dates);
+		}
+		
+		for(int i=0;i<empDetail.length;i++)
+		{
+			System.out.println("Employee "+(i+1)+" Detail is : "+empDetail[i].dispEmployeeInfo());
+		}
+		
+		}
+
+	}
+
+
+******************************************************************************************************
+
+
+public class Employee {
+	private int empId;
+	private String empName;
+	private float empSal;
+	Date empDoj;
+	public Employee() {
+		empId = 0;
+		empName = "Unknown";
+		empSal = 0.0F;
+		empDoj = new Date();
+	}
+	public Employee(int empId, String empName, float empSal, Date empDoj) {
+		
+		this.empId = empId;
+		this.empName = empName;
+		this.empSal = empSal;
+		this.empDoj = empDoj;
+	}
+
+	public String dispEmployeeInfo() {
+		return "\nempId=" + empId + "\nempName=" + empName
+				+ "\nempSal=" + empSal + "\nempDoj=" + empDoj.disDate() ;
+	}
+	
+	
+}
+************************************************************************************
+
+
+public class Date {
+	private int day;
+	private int mon;
+	private int year;
+	public Date()
+	{
+		
+	}
+	public Date(int day, int mon, int year) {
+		this.day = day;
+		this.mon = mon;
+		this.year = year;
+	}
+
+	public String disDate() {
+		return day + "-" + mon + "-" + year ;
+	}
+	
+	
+
+}
